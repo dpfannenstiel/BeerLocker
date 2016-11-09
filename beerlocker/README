@@ -1,0 +1,10 @@
+http://scottksmith.com/blog/2014/05/02/building-restful-apis-with-node/
+
+Of Note:
+nodemon
+nodemon app.js will restart the server on chagnes.
+npm install -g nodemon
+
+Node Inspector
+Debugger tool
+npm install -g node-inspector
