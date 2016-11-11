@@ -45,5 +45,8 @@ else
   echo "mongod.service already setup"
 fi
 
+npm install -g nodemon
+npm install -g node-inspector
+
 cd /vagrant/beerlocker
 npm install

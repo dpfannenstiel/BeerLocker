@@ -32,6 +32,49 @@ beersRoute.post(function(req, res) {
   })
 })
 
+beersRoute.get(function(req, res) {
+  Beer.find(function(err, beers) {
+    if (err)
+      res.send(err)
+
+    res.json(beers)
+  })
+})
+
+var beerRoute = router.route('/beers/:beer_id')
+beerRoute.get(function(req, res) {
+  Beer.findById(req.params.beer_id, function(err, beer) {
+    if (err)
+      res.send(err)
+
+    res.json(beer)
+  })
+})
+
+beerRoute.put(function(req, res) {
+  Beer.findById(req.params.beer_id, function(err, beer) {
+    if (err)
+      res.send(err)
+
+    beer.quantity = req.body.quantity
+    beer.save(function(err) {
+      if (err)
+        res.send(err)
+
+      res.json(beer)
+    })
+  })
+})
+
+beerRoute.delete(function(req, res) {
+  Beer.findByIdAndRemove(req.params.beer_id, function(err) {
+    if (err)
+      res.send(err)
+
+    res.json({message: 'Beer removed from the locker!'})
+  })
+})
+
 app.use('/api', router)
 
 app.listen(port)
