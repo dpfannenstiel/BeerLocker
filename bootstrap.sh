@@ -9,16 +9,12 @@ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" 
 # Update apt-get
 apt-get update
 
-# Install Node
-apt-get install -y npm
-
-# https://gist.github.com/prashcr/01d0ee571c3ae8a606ad
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
-. ~/.nvm/nvm.sh
-nvm install node
-nvm alias default node
-nvm use node
-npm i -g npm
+# https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
+cd ~
+curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+bash nodesource_setup.sh
+apt-get install -y nodejs
+apt-get install -y build-essential
 
 # Install Mongodb
 # https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-16.04/
