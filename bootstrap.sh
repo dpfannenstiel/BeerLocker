@@ -10,7 +10,15 @@ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" 
 apt-get update
 
 # Install Node
-apt-get install -y nodejs npm
+apt-get install -y npm
+
+# https://gist.github.com/prashcr/01d0ee571c3ae8a606ad
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+nvm alias default node
+nvm use node
+npm i -g npm
 
 # Install Mongodb
 # https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-16.04/
@@ -40,3 +48,6 @@ sudo service mongod restart
 else
   echo "mongod.service already setup"
 fi
+
+cd /vagrant/beerlocker
+npm install
